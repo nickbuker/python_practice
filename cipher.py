@@ -15,9 +15,9 @@ class CaesarCipher(object):
         adj = map(lambda x: x - 26 if type(x) == int and x > 26 else x, shf)
         return ''.join([self.num_dict[x] if x in self.num_dict else x for x in adj])
 
-    def decode(self, word):
-        self.word = list(word)
-        ind = [self.let_dict[x] if x in self.let_dict else x for x in self.word]
+    def decode(self, code):
+        self.code = list(code)
+        ind = [self.let_dict[x] if x in self.let_dict else x for x in self.code]
         shf = map(lambda x: x - self.shift if type(x) == int else x, ind)
         adj = map(lambda x: x + 26 if type(x) == int and x <= 0 else x, shf)
         return ''.join([self.num_dict[x] if x in self.num_dict else x for x in adj])
