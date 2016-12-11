@@ -12,13 +12,13 @@ class CaesarCipher(object):
     def encode(self, word):
         self.word = list(word.upper())
         ind = [self.let_dict[x] if x in self.let_dict else x for x in self.word]
-        ind = map(lambda x: x + self.shift if type(x) == int else x, ind)
-        ind = map(lambda x: x - 26 if type(x) == int and x > 26 else x, ind)
-        return ''.join([self.num_dict[x] if x in self.num_dict else x for x in ind])
+        shf = map(lambda x: x + self.shift if type(x) == int else x, ind)
+        adj = map(lambda x: x - 26 if type(x) == int and x > 26 else x, shf)
+        return ''.join([self.num_dict[x] if x in self.num_dict else x for x in adj])
 
     def decode(self, word):
         self.word = list(word)
         ind = [self.let_dict[x] if x in self.let_dict else x for x in self.word]
-        ind = map(lambda x: x - self.shift if type(x) == int else x, ind)
-        ind = map(lambda x: x + 26 if type(x) == int and x <= 0 else x, ind)
-        return ''.join([self.num_dict[x] if x in self.num_dict else x for x in ind])
+        shf = map(lambda x: x - self.shift if type(x) == int else x, ind)
+        adj = map(lambda x: x + 26 if type(x) == int and x <= 0 else x, shf)
+        return ''.join([self.num_dict[x] if x in self.num_dict else x for x in adj])
