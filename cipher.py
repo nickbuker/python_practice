@@ -1,6 +1,8 @@
 import string
 
+
 class CaesarCipher(object):
+
     def __init__(self, shift):
         self.shift = shift
         lets = list(string.uppercase)
