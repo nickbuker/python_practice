@@ -1,9 +1,9 @@
+import string
+
 class CaesarCipher(object):
     def __init__(self, shift):
         self.shift = shift
-        lets = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K',
-                'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V',
-                'W', 'X', 'Y', 'Z']
+        lets = list(string.uppercase)
         nums = [x for x in xrange(1,27)]
         self.let_dict = dict(zip(lets, nums))
         self.num_dict = dict(zip(nums, lets))
