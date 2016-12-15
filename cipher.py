@@ -10,7 +10,7 @@ class CaesarCipher(object):
         """
         self.shift = shift
         lets = list(string.uppercase)
-        nums = [x for x in xrange(1,27)]
+        nums = range(1,27)
         self.let_dict = dict(izip(lets, nums))
         self.num_dict = dict(izip(nums, lets))
 
@@ -19,14 +19,14 @@ class CaesarCipher(object):
         Input: word to encode (str)
         Output: coded word (str)
         """
-        return self.process(word, self.shift, 1)
+        return self._process(word, self.shift, 1)
 
     def decode(self, code):
         """
         Input: word to decode (str)
         Output: decoded word (str)
         """
-        return self.process(code, -self.shift, 0)
+        return self._process(code, -self.shift, 0)
 
     def _process(self, item, slide, direction):
         """
