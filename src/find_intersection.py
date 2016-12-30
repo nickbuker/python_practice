@@ -1,6 +1,7 @@
 from __future__ import division
 
 def inter(xa1,xa2,ya1,ya2,xb1,xb2,yb1,yb2):
+    # If both segments are vertical
     if vert(xa1,xa2) and vert(xb1,xb2):
         if between(ya1,ya2,yb1):
             return xb1, yb1
@@ -8,7 +9,7 @@ def inter(xa1,xa2,ya1,ya2,xb1,xb2,yb1,yb2):
             return xb2, yb2
         else:
             return "No Intercept"
-
+    # If the first segment is vertical
     if vert(xa1,xa2):
         mb, bb = slope_int(xb1,xb2,yb1,yb2)
         i_y = mb * xa1 + bb
@@ -16,7 +17,7 @@ def inter(xa1,xa2,ya1,ya2,xb1,xb2,yb1,yb2):
             return xa1, i_y
         else:
             return "No Intercept"
-
+    # If the second segment is vertical
     if vert(xb1,xb2):
         ma, ba = slope_int(xa1,xa2,ya1,ya2)
         i_y = ma * xb1 + ba
@@ -24,10 +25,10 @@ def inter(xa1,xa2,ya1,ya2,xb1,xb2,yb1,yb2):
             return xb1, i_y
         else:
             return "No Intercept"
-
+    # Find slope and y-intercepts for both linear equations
     ma, ba = slope_int(xa1,xa2,ya1,ya2)
     mb, bb = slope_int(xb1,xb2,yb1,yb2)
-
+    # If segments are parallel
     if ma == mb and ba != bb:
         return "No Intercept"
     if ma == mb and ba == bb:
@@ -37,9 +38,10 @@ def inter(xa1,xa2,ya1,ya2,xb1,xb2,yb1,yb2):
             return xb2, yb2
         else:
             return "No Intercept"
-
+    # Find theoretical intersection point
     i_x = (bb - ba) / (ma - mb)
     i_y = ma * i_x + ba
+    # Determine if intersection point is within the segments
     if (between(xa1,xa2,i_x) and between(xb1,xb2,i_x) and
         between(ya1,ya2,i_y) and between(yb1,yb2,i_y)):
         return i_x, i_y
