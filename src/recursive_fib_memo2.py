@@ -4,6 +4,8 @@ def fib(n):
 
 
 def get_fib(n, memo):
+    if n < 0:
+        return None
     if n < 2:
         return n
     if n in memo:
