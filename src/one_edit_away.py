@@ -1,4 +1,6 @@
 def one_edit_away(a, b):
+    if a == b:
+        return False
     if (len(a) - len(b)) ** 2 > 1:
         return False
     if len(a) == len(b):
