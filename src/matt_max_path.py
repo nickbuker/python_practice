@@ -2,38 +2,45 @@ import numpy as np
 
 
 def find_max_path(arr):
-    windows = {col: make_window(col, arr) for col in range(len(arr)-1)}
-    #best_windows = {col: best_window(col, arr, windows) for col in range(1,len(arr))}
-    best_windows = best_window(1, arr, windows)
-    return windows, best_windows
+    shape = (len(arr), len(arr[0]))
+    paths = make_paths_matrix(shape)
 
 
-def make_window(col, arr):
-    window = {}
+def make_paths_matrix(shape):
+    paths = []
+    for i in range(shape[0]):
+        tmp_row = shape[1] * [0]
+        paths.append(tmp_row)
+    return paths
+
+
+def make_windows(col, arr, shape):
+    windows = {}
     col_list = [row[col] for row in arr]
-    for i in range(len(col_list)):
-        for j in range(i, len(col_list)):
-            window[((i, col), (j, col))] = sum(col_list[i:j+1])
-    return window
+    for i in xrange(shape[1]):
+        for j in xrange(i, shape[1]):
+            windows[((i, col), (j, col))] = sum(col_list[i: j + 1])
+    return windows
 
 
-def best_window(col, arr, windows):
+def find_best_windows(col, shape, arr, windows, paths):
     best_windows = {}
-    col_list = [row[col] for row in arr]
-    for i in range(len(col_list)):
-        best = (0, 0, -np.inf)
-        for k, v in windows[col - 1].iteritems():
-            if (k[0] == (i, col - 1) or k[1] == (i, col - 1)) and v > best[2]:
-                best = (k[0], k[1], v)
-            best_windows[(i, col)] = best
-    return best_windows
+    for i in xrange(shape[0]):
+        best_windows[(i, col)] = -np.inf
+        for k, v in windows.iteritems():
+            if (
+                (
+                 k[0] == (i, col - 1) or
+                 k[1] == (i, col - 1)
+                ) and
+                best_windows[(i,col)] < v + max(paths[k[0][0]][k[0][1]],
+                                                paths[k[1][0]][k[1][1]])
+               ):
+               best_windows[(i, col)] = {k: v}
+               paths[i][col] = v + max(paths[k[0][0]][k[0][1]],
+                                       paths[k[1][0]][k[1][1]])
+    return best_windows, paths
 
 
-def max_path(point, best_windows, path):
-    if point[1] == 1:
-        path += best_windows[1][point][1]
-        return path
-
-
-    start = max_path(best_windows[point[1]][point][0][0])
-    stop = max_path(best_windows[point[1]][point][0][1])
+def path_to_element(element):
+    pass
