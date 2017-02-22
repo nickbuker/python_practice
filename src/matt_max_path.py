@@ -26,21 +26,12 @@ def make_windows(col, arr, shape):
 def find_best_windows(col, shape, arr, windows, paths):
     best_windows = {}
     for i in xrange(shape[0]):
-        best_windows[(i, col)] = -np.inf
+        best_windows[(i, col)] = (0, -np.inf)
         for k, v in windows.iteritems():
-            if (
-                (
-                 k[0] == (i, col - 1) or
-                 k[1] == (i, col - 1)
-                ) and
-                best_windows[(i,col)] < v + max(paths[k[0][0]][k[0][1]],
-                                                paths[k[1][0]][k[1][1]])
-               ):
-               best_windows[(i, col)] = {k: v}
-               paths[i][col] = v + max(paths[k[0][0]][k[0][1]],
-                                       paths[k[1][0]][k[1][1]])
+            if k[0] == (i, col - 1) or k[1] == (i, col - 1):
+                if best_windows[(i,col)][1] < v + max(paths[k[0][0]][k[0][1]],
+                                                   paths[k[1][0]][k[1][1]]):
+                    paths[i][col] = v + max(paths[k[0][0]][k[0][1]],
+                                            paths[k[1][0]][k[1][1]])
+                    best_windows[(i, col)] = (k, v)
     return best_windows, paths
-
-
-def path_to_element(element):
-    pass
