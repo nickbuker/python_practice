@@ -7,6 +7,7 @@ def find_max_path(arr):
     for col in xrange(1, shape[1]):
         windows = make_windows(col, arr, shape)
         paths = find_best_windows(col, arr, shape, windows, paths)
+        print paths
         if col == shape[1] - 1:
             col_list_arr = [row[col] for row in arr]
             col_list_paths = [row[col] for row in paths]
@@ -37,7 +38,7 @@ def find_best_windows(col, arr, shape, windows, paths):
         for k, v in windows.iteritems():
             if k[0] == (i, col - 1) or k[1] == (i, col - 1):
                 if best_windows[(i,col)][1] < v + max(paths[k[0][0]][k[0][1]],
-                                                   paths[k[1][0]][k[1][1]]):
+                                                      paths[k[1][0]][k[1][1]]):
                     paths[i][col] = v + max(paths[k[0][0]][k[0][1]],
                                             paths[k[1][0]][k[1][1]])
                     best_windows[(i, col)] = (k, v)
