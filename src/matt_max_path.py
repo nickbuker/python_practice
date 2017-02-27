@@ -45,7 +45,6 @@ def filter_windows(col, windows, shape):
 def find_paths(col, filtered_windows, paths, shape):
     best_windows = {}
     for i in xrange(shape[0]):
-        print i, col
         if (i, col) not in best_windows:
             best_windows[(i, col)] = (((-1,-1), (-1,-1)), -np.inf)
         for n in filtered_windows[(i, col)]:
@@ -55,5 +54,4 @@ def find_paths(col, filtered_windows, paths, shape):
             if best_windows[(i, col)][1] < total:
                 paths[i][col] = total
                 best_windows[(i, col)] = ((k0, k1), total)
-            print k0, k1, win_sum, total
     return paths
