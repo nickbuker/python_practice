@@ -6,45 +6,48 @@ class Sorter(object):
     def __init__(self, arr):
         self.arr = arr
 
-    def sort(self, sort_type='bubble'):
+    def sort(self, sort_type='quick'):
         time0 = time.time()
+        new_arr = self._copy_and_counts(self.arr)
         if sort_type == 'bubble':
-            self.comp, self.edits = 0, 0
-            sorted_arr = self._bubble(self.arr)
+            sorted_arr = self._bubble(new_arr)
         elif sort_type == 'quick':
-            self.comp, self.edits = 0, 0
-            sorted_arr = self._quicksort(self.arr)
+            sorted_arr = self._quicksort(new_arr)
         elif sort_type == 'merge':
-            self.comp, self.edits = 0, 0
-            sorted_arr = self._merge_sort(self.arr)
+            sorted_arr = self._merge_sort(new_arr)
         else:
             print 'Not valid sort technique.'
         print '\ncomparisons: {} \nedits: {}'.format(self.comp, self.edits)
         print 'time: {}s\n'.format(time.time() - time0)
         return sorted_arr
 
-    def _bubble(self, arr):
+    def _copy_and_counts(self, arr):
+        self.comp, self.edits = 0, 0
         new_arr = copy(arr)
+        return new_arr
+
+    def _compare(self, x, y):
+        self.comp += 1
+        return x > y
+
+    def _bubble(self, arr):
         active = True
         while active:
             active = False
-            for i in xrange(1, len(new_arr)):
-                x = new_arr[i - 1]
-                y = new_arr[i]
-                self.comp += 1
-                if x > y:
-                    new_arr[i], new_arr[i - 1] = x, y
+            for i in xrange(1, len(arr)):
+                x = arr[i - 1]
+                y = arr[i]
+                if self._compare(x, y):
+                    arr[i], arr[i - 1] = x, y
                     active = True
                     self.edits += 1
-        return new_arr
+        return arr
 
     def _quicksort(self, arr):
-        new_arr = copy(arr)
-        if len(new_arr) > 1:
+        if len(arr) > 1:
             left, equal, right = [], [], []
-            pivot = new_arr[-1]
-            for n in new_arr:
-                self.comp += 1
+            pivot = arr[-1]
+            for n in arr:
                 if n < pivot:
                     self.edits += 1
                     left.append(n)
@@ -58,7 +61,7 @@ class Sorter(object):
                     right.append(n)
             return self._quicksort(left) + equal + self._quicksort(right)
         else:
-            return new_arr
+            return arr
 
     def _merge_sort(self, arr):
         if len(arr) > 1:
