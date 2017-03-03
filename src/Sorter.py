@@ -26,9 +26,12 @@ class Sorter(object):
         new_arr = copy(arr)
         return new_arr
 
-    def _compare(self, x, y):
+    def _compare(self, n1, n2):
         self.comp += 1
-        return x > y
+        if n1 > n2:
+            self.edits += 1
+            return True
+        return False
 
     def _bubble(self, arr):
         active = True
@@ -48,17 +51,13 @@ class Sorter(object):
             left, equal, right = [], [], []
             pivot = arr[-1]
             for n in arr:
-                if n < pivot:
-                    self.edits += 1
+                if self._compare(pivot, n):
                     left.append(n)
-                self.comp += 1
-                if n == pivot:
+                elif self._compare(n, pivot):
+                    right.append(n)
+                else:
                     self.edits += 1
                     equal.append(n)
-                self.comp += 1
-                if n > pivot:
-                    self.edits += 1
-                    right.append(n)
             return self._quicksort(left) + equal + self._quicksort(right)
         else:
             return arr
@@ -73,22 +72,17 @@ class Sorter(object):
             new_arr = []
             i, j = 0, 0
             while i < len(sorted_left) and j < len(sorted_right):
-                self.comp += 1
-                if sorted_left[i] < sorted_right[j]:
+                self.comp += 2
+                if self._compare(sorted_right[j], sorted_left[i]):
                     new_arr.append(sorted_left[i])
                     i += 1
-                    self.edits += 1
                 else:
                     new_arr.append(sorted_right[j])
                     j += 1
                     self.edits +=1
-            self.comp += 1
-            if i < len(sorted_left):
+            if self._compare(len(sorted_left), i):
                 new_arr += sorted_left[i:]
-                self.edits += 1
-            self.comp += 1
-            if j < len(sorted_right):
+            if self._compare(len(sorted_right), j):
                 new_arr += sorted_right[j:]
-                self.edits += 1
             return new_arr
         return arr
