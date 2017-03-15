@@ -8,12 +8,12 @@ class FindPy(object):
         pass
 
     def pi(self, n=500):
-        coprimes = 0
-        for i in xrange(n):
-            nums = np.random.randint(1, 1000, 2)
-            if self.coprime(nums):
-                coprimes += 1
-        return (6 / (coprimes / n)) ** 0.5
+        self.coprimes = 0
+        num_arr = zip(np.random.randint(1,1000, n),
+                      np.random.randint(1,1000, n))
+        map(self.coprime, num_arr)
+        return (6 / (self.coprimes / n)) ** 0.5
 
     def coprime(self, nums):
-        return gcd(nums[0], nums[1]) == 1
+        if gcd(nums[0], nums[1]) == 1:
+            self.coprimes += 1
