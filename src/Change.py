@@ -1,5 +1,3 @@
-import numpy as np
-
 class Change(object):
 
     def __init__(self):
@@ -7,6 +5,7 @@ class Change(object):
 
     def make(self, n, *args):
         self.coins = sorted(args)
+        self.found = set()
         return self._change(set([n]), 0)
 
     def _change(self, nums, count):
@@ -17,10 +16,9 @@ class Change(object):
                 new = n - c
                 if new == 0:
                     return count
-                if new in layer:
-                    continue
-                elif new in nums:
+                if new in self.found or new in nums:
                     continue
                 else:
-                    layer.add(n - c)
+                    self.found.add(new)
+                    layer.add(new)
         return self._change(layer, count)
