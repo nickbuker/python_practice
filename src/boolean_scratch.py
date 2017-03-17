@@ -1,10 +1,10 @@
-def func_or(a,b):
+def func_or(a, b):
     if get_val(a, b) > 0:
         return True
     return False
 
 
-def func_xor(a,b):
+def func_xor(a, b):
     if get_val(a, b) == 1:
         return True
     return False
@@ -17,7 +17,7 @@ def get_val(a, b):
 def check_let(x):
     if type(x) == int and x != 0:
         return 1
-    if x == True:
+    if x:
         return 1
     else:
         return 0

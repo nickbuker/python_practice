@@ -1,7 +1,7 @@
 def card_game(arr):
     plays = [(n, i) for i, n in enumerate(arr)]
     ind = 0
-    while lenp(plays) > 1:
+    while len(plays) > 1:
         ind, plays = elim(ind, plays)
     return plays[0][1]
 

@@ -1,5 +1,6 @@
 from collections import deque
 
+
 def combine(*args):
     result, active = [], True
     args_deque = [deque(arg) for arg in args]

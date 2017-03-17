@@ -1,6 +1,7 @@
 import time
 from copy import copy
 
+
 class Sorter(object):
 
     def __init__(self, arr):
@@ -79,7 +80,7 @@ class Sorter(object):
                 else:
                     new_arr.append(sorted_right[j])
                     j += 1
-                    self.edits +=1
+                    self.edits += 1
             if self._compare(len(sorted_left), i):
                 new_arr += sorted_left[i:]
             if self._compare(len(sorted_right), j):

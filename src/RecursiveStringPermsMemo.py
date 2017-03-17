@@ -8,11 +8,11 @@ class PermsMemo(object):
         if len(s) <= 1:
             return [s]
         # get pivot char
-        for i,a in enumerate(s):
+        for i, a in enumerate(s):
             perm_list.append([a])
             # get perms of remaining chars
             remains = []
-            for j,b in enumerate(s):
+            for j, b in enumerate(s):
                 if i != j:
                     remains.append(b)
                     if str(remains) in self.memo:

@@ -2,7 +2,7 @@ def fizz_buzz_cuckoo_clock(time):
     time = map(int, time.split(':'))
     if time[1] == 0:
         if time[0] > 12:
-            return ('Cuckoo ' * (time[0] -12)).strip()
+            return ('Cuckoo ' * (time[0] - 12)).strip()
         else:
             return ('Cuckoo ' * time[0]).strip()
     if time[1] == 30:

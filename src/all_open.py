@@ -1,6 +1,6 @@
 def is_balanced(phrase, punct):
     items = []
-    p_dict = {punct[i]: punct[i+1] for i in xrange(0, len(punct) -1, 2)}
+    p_dict = {punct[i]: punct[i + 1] for i in xrange(0, len(punct) - 1, 2)}
     for char in phrase:
         if char in items:
             items.pop()

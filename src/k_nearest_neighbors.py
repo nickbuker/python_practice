@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def knn(k, train, data):
     distances = dist(train, data)
     return assign(k, distances)

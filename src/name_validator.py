@@ -1,5 +1,6 @@
 from string import uppercase, lowercase
 
+
 def show_me(name):
     name_split = name.split('-')
     for n in name_split:

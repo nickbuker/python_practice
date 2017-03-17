@@ -1,5 +1,6 @@
 from math import log
 
+
 def count_trailing_zeros(num):
     zeros = 0
     for n in xrange(0, num + 1, 5):

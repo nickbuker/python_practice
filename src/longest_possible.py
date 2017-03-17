@@ -12,5 +12,6 @@ def longest_possible(play):
             best_song = tup[1]
     return best_song
 
+
 def make_seconds(play_time):
     return (int(play_time[0:2]) * 60) + int(play_time[3::])

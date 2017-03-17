@@ -1,5 +1,3 @@
-import numpy as np
-
 def smallest(n):
     int_lst = map(int, list(str(n)))
     int_srt = sorted(int_lst)

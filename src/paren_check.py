@@ -1,5 +1,5 @@
 def paren_checker(s):
-    p = {"(":0, "[":0, "{":0, ")":0, "]":0, "}":0}
+    p = {"(": 0, "[": 0, "{": 0, ")": 0, "]": 0, "}": 0}
     s_list = list(s)
     for char in s_list:
         if char in p:

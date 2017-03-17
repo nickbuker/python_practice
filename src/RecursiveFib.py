@@ -5,7 +5,7 @@ class RecursiveFib(object):
 
     def get_fib(self, n):
         if n > 1:
-            return self.get_fib(n-1) + self.get_fib(n-2)
+            return self.get_fib(n - 1) + self.get_fib(n - 2)
         return n
 
 

@@ -20,5 +20,5 @@ def find_zeros(arr):
     for i, r in enumerate(arr):
         for j, c in enumerate(r):
             if c == 0:
-                zeros.append((i,j))
+                zeros.append((i, j))
     return zeros

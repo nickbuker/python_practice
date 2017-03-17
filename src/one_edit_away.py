@@ -13,7 +13,7 @@ def one_edit_away(a, b):
 
 def same_len(a, b):
     diffs = 0
-    for i,c in enumerate(a):
+    for i, c in enumerate(a):
         if c != b[i]:
             diffs += 1
         if diffs > 1:

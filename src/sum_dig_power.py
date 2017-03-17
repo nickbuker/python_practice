@@ -1,6 +1,6 @@
 def sum_dig_pow(a, b):
     results = []
-    for num in xrange(a,b+1):
+    for num in xrange(a, b + 1):
         num_list = list(str(num))
         num_sum = 0
         for i, dig in enumerate(num_list):

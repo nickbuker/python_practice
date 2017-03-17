@@ -7,4 +7,3 @@ def gym_slang(s):
     s = s.replace("oing to", "onna")
     s = s.replace("ombination", "ombo")
     return s
-    

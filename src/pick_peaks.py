@@ -16,4 +16,4 @@ def pick_peaks(arr):
                 continue
         old2 = old1
         old1 = n
-    return {"pos":pos, "peaks":peaks}
+    return {"pos": pos, "peaks": peaks}

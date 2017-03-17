@@ -15,7 +15,7 @@ def construct_mat(n):
 
 def add_ones(mat):
     idx = 0
-    for i,r in enumerate(mat):
-        r[idx], r[-idx-1] = 1, 1
+    for i, r in enumerate(mat):
+        r[idx], r[-idx - 1] = 1, 1
         idx += 1
     return mat

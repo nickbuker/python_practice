@@ -20,7 +20,7 @@ def make_segs(arr):
     '''
     rows, cols, diags = [], [], []
     for i, row in enumerate(arr):
-        for j in range(0,len(arr)):
+        for j in range(0, len(arr)):
             if j + 2 < len(row):
                 rows.append((i, j))
             if i + 2 < len(arr):
@@ -41,26 +41,26 @@ def get_max_sum(rows, cols, diags, arr):
     max_sum = -np.inf
     for n in rows:
         row_sum = (
-                   arr[n[0]][n[1]] +
-                   arr[n[0]][n[1] + 1] +
-                   arr[n[0]][n[1] + 2]
-                   )
+            arr[n[0]][n[1]] +
+            arr[n[0]][n[1] + 1] +
+            arr[n[0]][n[1] + 2]
+        )
         if max_sum < row_sum:
             max_sum = row_sum
     for n in cols:
         col_sum = (
-                   arr[n[0]][n[1]] +
-                   arr[n[0] + 1][n[1]] +
-                   arr[n[0] + 2][n[1]]
-                   )
+            arr[n[0]][n[1]] +
+            arr[n[0] + 1][n[1]] +
+            arr[n[0] + 2][n[1]]
+        )
         if max_sum < col_sum:
             max_sum = col_sum
     for n in diags:
         diag_sum = (
-                    arr[n[0]][n[1]] +
-                    arr[n[0] + 1][n[1] + 1] +
-                    arr[n[0] + 2][n[1] + 2]
-                    )
+            arr[n[0]][n[1]] +
+            arr[n[0] + 1][n[1] + 1] +
+            arr[n[0] + 2][n[1] + 2]
+        )
         if max_sum < diag_sum:
             max_sum = diag_sum
     return max_sum

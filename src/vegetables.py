@@ -7,4 +7,4 @@ def count_vegetables(string):
             veg_dict[veg] += 1
         else:
             veg_dict[veg] = 1
-    return sorted([(v,k) for k,v in veg_dict.iteritems()], reverse=True)
+    return sorted([(v, k) for k, v in veg_dict.iteritems()], reverse=True)

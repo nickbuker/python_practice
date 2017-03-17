@@ -1,6 +1,6 @@
 def approx_root(n):
     base = 0
-    for i in xrange(1,n):
+    for i in xrange(1, n):
         if i ** 2 <= n:
             base = i
         if i ** 2 > n:

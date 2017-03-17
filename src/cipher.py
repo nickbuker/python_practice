@@ -10,7 +10,7 @@ class CaesarCipher(object):
         """
         self.shift = shift
         lets = list(string.uppercase)
-        nums = range(1,27)
+        nums = range(1, 27)
         self.let_dict = dict(izip(lets, nums))
         self.num_dict = dict(izip(nums, lets))
 

@@ -17,7 +17,7 @@ def add_ones(array):
     if len(array) == 1:
         return [[1]]
     if len(array) == 2:
-        return [[1,1][0,1]]
+        return [[1, 1][0, 1]]
     for n in array[0]:
         n = 1
     for n in array[-1]:
@@ -48,4 +48,3 @@ def add_ones(array):
                 array[-i][stop] = 1
             stops.append(stops[-1] - 2)
         i += 1
-        

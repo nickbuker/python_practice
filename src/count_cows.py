@@ -2,7 +2,7 @@ def count_cows(n):
     if type(n) != int:
         return None
     cow_num = 1
-    cows = {0:0}
+    cows = {0: 0}
     cows_temp = {}
     for i in xrange(n):
         for cow in cows:

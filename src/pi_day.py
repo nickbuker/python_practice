@@ -10,8 +10,8 @@ class FindPy(object):
 
     def pi(self, n=500):
         self.coprimes = 0
-        num_arr = zip(np.random.randint(1,1000, n),
-                      np.random.randint(1,1000, n))
+        num_arr = zip(np.random.randint(1, 1000, n),
+                      np.random.randint(1, 1000, n))
         map(self._coprime, num_arr)
         return (6 / (self.coprimes / n)) ** 0.5
 
