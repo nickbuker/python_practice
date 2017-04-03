@@ -1,6 +1,7 @@
 """
 Write a function that converts a dictionary of equal length
 lists into a list of dictionaries.
+
 {'a': [1, 2, 3], 'b': [3, 2, 1]}
   => [{'a': 1, 'b': 3}, {'a': 2, 'b': 2}, {'a': 3, 'b': 1}]
 """
