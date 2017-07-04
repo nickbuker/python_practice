@@ -60,3 +60,6 @@ class Table:
             temp.append(temp_row)
             col_names = [self._col_names[n] for n in columns]
         return Table(temp, col_names)
+
+    def group_by(self, col1, col2, agg):
+        pass

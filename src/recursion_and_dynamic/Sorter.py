@@ -3,7 +3,6 @@ from copy import copy
 
 
 class Sorter(object):
-
     def __init__(self, arr):
         self.arr = arr
 
@@ -17,7 +16,7 @@ class Sorter(object):
         elif sort_type == 'merge':
             sorted_arr = self._merge_sort(new_arr)
         else:
-            print 'Not valid sort technique.'
+            print 'Not a valid sort technique.'
         print '\ncomparisons: {} \nedits: {}'.format(self.comp, self.edits)
         print 'time: {}s\n'.format(time.time() - time0)
         return sorted_arr
